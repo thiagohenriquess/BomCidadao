@@ -1,6 +1,7 @@
 package entidade;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Titular {
@@ -13,7 +14,7 @@ public class Titular {
 		super();
 		setMatricula(matricula);
 		setNome(nome);
-		dependentes = null;
+		dependentes = new ArrayList<Dependente>();
 	}
 
 	public Integer getMatricula() {
@@ -36,6 +37,14 @@ public class Titular {
 		this.nome = nome;
 	}
 
+	public List<Dependente> getDependentes() {
+		return dependentes;
+	}
+
+	public void setDependentes(List<Dependente> dependentes) {
+		this.dependentes = dependentes;
+	}
+
 	public BigDecimal calcularCustoDependentes() {
 		BigDecimal total = BigDecimal.ZERO;
 		if (dependentes != null) {			
@@ -44,6 +53,18 @@ public class Titular {
 			}
 		}
 		return total;
+	}
+	
+	public Boolean addDependente(Dependente d1){
+		try{
+			dependentes.add(d1);
+		}
+		catch(NullPointerException e){
+			return false;
+		}
+		
+		return true;
+		
 	}
 
 }
