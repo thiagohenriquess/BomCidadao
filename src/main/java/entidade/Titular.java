@@ -18,6 +18,7 @@ public class Titular {
 		super();
 		setMatricula(matricula);
 		setNome(nome);
+		dependentes = null;
 	}
 
 	public Integer getMatricula() {
