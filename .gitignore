@@ -1,2 +1,17 @@
+<<<<<<< HEAD
 /target/
 /.~lock.Relatorio.odt#
+=======
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+>>>>>>> b167e0dcefa112db130bd1c508aecf61858c27d9
