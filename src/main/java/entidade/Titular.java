@@ -5,11 +5,6 @@ import java.util.List;
 
 public class Titular {
 
-	private static final BigDecimal JOVEM = new BigDecimal("22.00");
-	private static final BigDecimal MEDIO = new BigDecimal("50.00");
-	private static final BigDecimal ADULTO = new BigDecimal("150.00");
-	private static final BigDecimal SENIOR = new BigDecimal("320.00");
-
 	private List<Dependente> dependentes;
 	private Integer matricula;
 	private String nome;
@@ -43,17 +38,9 @@ public class Titular {
 
 	public BigDecimal calcularCustoDependentes() {
 		BigDecimal total = BigDecimal.ZERO;
-		if (dependentes != null) {
+		if (dependentes != null) {			
 			for (Dependente dependente : dependentes) {
-				if (dependente.getIdade() < 21) {
-					total = total.add(JOVEM);
-				} else if (dependente.getIdade() < 35) {
-					total = total.add(MEDIO);
-				} else if (dependente.getIdade() < 65) {
-					total = total.add(ADULTO);
-				} else {
-					total = total.add(SENIOR);
-				}
+				total.add( dependente.getValor());
 			}
 		}
 		return total;
