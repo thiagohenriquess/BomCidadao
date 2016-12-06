@@ -10,7 +10,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
 
-public class DependenteTest {
+public class TestaJoda {
 	
 	DateTime niver1 = new DateTime(1993, 04, 18, 00, 00);
 	DateTime niver2 = new DateTime(1998, 12, 01, 00, 00);
