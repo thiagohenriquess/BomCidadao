@@ -19,10 +19,10 @@ public class TestaTitular {
 	Titular titular1 = new Titular(1, "Pelé");
 	Titular titular2 = new Titular(1, "Garrincha");
 
-	Dependente d1 = new Dependente("Ana", niver1);
-	Dependente d2 = new Dependente("Jose", niver2);
-	Dependente d3 = new Dependente("Bruna", niver3);
-	Dependente d4 = new Dependente("Seu Jose", niver4);
+	Dependente depMedio = new Dependente("Ana", niver1);
+	Dependente depJovem = new Dependente("Jose", niver2);
+	Dependente depAdulto = new Dependente("Bruna", niver3);
+	Dependente depSenior = new Dependente("Seu Jose", niver4);
 
 	BigDecimal JOVEM = new BigDecimal("22.00");
 	BigDecimal MEDIO = new BigDecimal("50.00");
@@ -39,42 +39,50 @@ public class TestaTitular {
 	@Test
 	public void TestaSemDependente() {
 
-		assertNull(d1.getTitular());
+		assertNull(depMedio.getTitular());
 		assertTrue(titular1.getDependentes().isEmpty());
 	}
 
 	@Test
 	public void TestaAddDependente() {
 
-		assertTrue(titular1.addDependente(d1));
+		assertTrue(titular1.addDependente(depMedio));
 	}
 
 	@Test
-	public void TestaDependenteMedioValor() {
+	public void TestaDependenteMedio() {
 
-		titular1.addDependente(d1);
+		titular1.addDependente(depMedio);
 		assertEquals(MEDIO, titular1.calcularCustoDependentes());
+		
+		assertEquals("Ana", titular1.getDependentes().get(0).getNome());
 	}
 
 	@Test
-	public void TestaDependenteJovemValor() {
+	public void TestaDependenteJovem() {
 
-		titular1.addDependente(d2);
+		titular1.addDependente(depJovem);
 		assertEquals(JOVEM, titular1.calcularCustoDependentes());
+		
+		assertEquals("Jose", titular1.getDependentes().get(0).getNome());
 	}
 
 	@Test
-	public void TestaDependenteAdultoValor() {
+	public void TestaDependenteAdulto() {
 
-		titular1.addDependente(d3);
+		titular1.addDependente(depAdulto);
 		assertEquals(ADULTO, titular1.calcularCustoDependentes());
+		
+		assertEquals("Bruna", titular1.getDependentes().get(0).getNome());
 	}
 
 	@Test
-	public void TestaDependenteSeniorValor() {
+	public void TestaDependenteSenior() {
 
-		titular1.addDependente(d4);
+		titular1.addDependente(depSenior);
 		assertEquals(SENIOR, titular1.calcularCustoDependentes());
+		
+		assertEquals("Seu Jose", titular1.getDependentes().get(0).getNome());
 	}
 
 	@Test
@@ -83,14 +91,26 @@ public class TestaTitular {
 		BigDecimal valor1 = JOVEM.add(MEDIO);
 		BigDecimal valor2 = ADULTO.add(SENIOR);
 
-		titular1.addDependente(d1);
-		titular1.addDependente(d2);
+		titular1.addDependente(depMedio);
+		titular1.addDependente(depJovem);
 
-		titular2.addDependente(d3);
-		titular2.addDependente(d4);
+		titular2.addDependente(depAdulto);
+		titular2.addDependente(depSenior);
 
 		assertEquals(valor1, titular1.calcularCustoDependentes());
 		assertEquals(valor2, titular2.calcularCustoDependentes());
 	}
+	
+	@Test
+	public void TestaValorGeral2() {
 
+		BigDecimal valor1 = JOVEM.add(MEDIO).add(ADULTO).add(SENIOR);
+		
+		titular1.addDependente(depMedio);
+		titular1.addDependente(depJovem);
+		titular1.addDependente(depAdulto);
+		titular1.addDependente(depSenior);
+
+		assertEquals(valor1, titular1.calcularCustoDependentes());
+	}
 }

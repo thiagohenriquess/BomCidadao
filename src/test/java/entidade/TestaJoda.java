@@ -3,8 +3,6 @@ package entidade;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import java.math.BigDecimal;
-
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -45,14 +43,4 @@ public class TestaJoda {
 		
 		assertEquals(23, d1.getIdade());
 	}
-	
-	@Test
-	public void TestaValorDependente(){
-		BigDecimal valorMedio = new BigDecimal("50.00"); 
-		BigDecimal valorJovem = new BigDecimal("22.00");
-		
-		assertEquals(valorMedio, d1.getValor());
-		assertEquals(valorJovem, d2.getValor());
-	}
-
 }
