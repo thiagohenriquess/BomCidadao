@@ -1,5 +1,12 @@
 <<<<<<< HEAD
-/target/*
+/ml
+*.eml
+.idea
+.metadata
+.classpath
+.settings
+.project
+target/*
 /.~lock.Relatorio.odt
 
 =======
