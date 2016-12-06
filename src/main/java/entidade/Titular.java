@@ -47,7 +47,7 @@ public class Titular {
 
 	public BigDecimal calcularCustoDependentes() {
 		BigDecimal total = BigDecimal.ZERO;
-		if (dependentes != null) {			
+		if (!dependentes.isEmpty()) {			
 			for (Dependente dependente : dependentes) {
 				total = total.add(dependente.getValor());
 			}
