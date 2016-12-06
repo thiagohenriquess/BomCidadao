@@ -7,11 +7,6 @@ import org.joda.time.DurationFieldType;
 import org.joda.time.Period;
 
 public class Dependente {
-	
-	private static final BigDecimal JOVEM = new BigDecimal("22.00");
-	private static final BigDecimal MEDIO = new BigDecimal("50.00");
-	private static final BigDecimal ADULTO = new BigDecimal("150.00");
-	private static final BigDecimal SENIOR = new BigDecimal("320.00");
 
 	private String nome;
 	private DateTime dataNascimento;
@@ -51,15 +46,8 @@ public class Dependente {
 	}
 
 	private void setValor() {
-		if (getIdade() < 21) {
-			valor = JOVEM;
-		} else if (getIdade() < 35) {
-			valor = MEDIO;
-		} else if (getIdade() < 65) {
-			valor = ADULTO;
-		} else {
-			valor = SENIOR;
-		}
+
+		valor = TipoValor.cria(getIdade()); 
 	}
 
 	public Titular getTitular() {
