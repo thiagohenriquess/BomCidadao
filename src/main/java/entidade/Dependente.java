@@ -19,10 +19,10 @@ public class Dependente {
 	private Titular titular;
 
 	public Dependente(String nome, DateTime dataNascimento) {
-		super();
-		setNome(nome);
+		
+		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-		valor = getValor();
+		setValor();
 	}
 	
 	public String getNome() {
@@ -46,7 +46,11 @@ public class Dependente {
 		return period.get(DurationFieldType.years());
 	}
 
-	public BigDecimal getValor() {
+	public BigDecimal getValor() {		
+		return valor;
+	}
+
+	private void setValor() {
 		if (getIdade() < 21) {
 			valor = JOVEM;
 		} else if (getIdade() < 35) {
@@ -56,36 +60,13 @@ public class Dependente {
 		} else {
 			valor = SENIOR;
 		}
-		
-		return valor;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public Titular getTitular() {
+		return titular;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Dependente other = (Dependente) obj;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
+	public void setTitular(Titular titular) {
+		this.titular = titular;
 	}
 }

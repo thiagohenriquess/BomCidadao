@@ -49,7 +49,7 @@ public class Titular {
 		BigDecimal total = BigDecimal.ZERO;
 		if (dependentes != null) {			
 			for (Dependente dependente : dependentes) {
-				total.add( dependente.getValor());
+				total = total.add(dependente.getValor());
 			}
 		}
 		return total;
@@ -58,6 +58,7 @@ public class Titular {
 	public Boolean addDependente(Dependente d1){
 		try{
 			dependentes.add(d1);
+			d1.setTitular(this);
 		}
 		catch(NullPointerException e){
 			return false;
