@@ -15,8 +15,8 @@ public class Dependente {
 
 	public Dependente(String nome, DateTime dataNascimento) {
 
-		this.nome = nome;
-		this.dataNascimento = dataNascimento;
+		setNome(nome);
+		setDataNascimento(dataNascimento);
 		setValor();
 	}
 
@@ -59,5 +59,22 @@ public class Dependente {
 
 	public void setTitular(Titular titular) {
 		this.titular = titular;
+	}
+
+	@Override
+	public boolean equals(Object objeto) {
+		if (this == objeto)
+			return true;
+		if (objeto == null || getClass() != objeto.getClass())
+			return false;
+
+		Dependente dep = (Dependente) objeto;
+
+		return nome != null ? nome.equals(dep.nome) : dep.nome == null;
+	}
+
+	@Override
+	public int hashCode() {
+		return nome != null ? nome.hashCode() : 0;
 	}
 }
