@@ -1,13 +1,11 @@
 package entidade;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.joda.time.DateTime;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import org.joda.time.DateTime;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class TestaTitular {
 
@@ -113,4 +111,33 @@ public class TestaTitular {
 
 		assertEquals(valor1, titular1.calcularCustoDependentes());
 	}
+
+	@Test
+	public void TestaDependenteDuplicado() {
+
+		titular1.addDependente(depMedio);
+		assertFalse(titular1.addDependente(depMedio));
+	}
+
+	@Test
+	public void TestaDependenteInvalido() {
+
+		Dependente d1 = null;
+
+		assertFalse(titular1.addDependente(d1));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+    public void TestaDependenteInvalido2(){
+        Dependente d1 = new Dependente("batata", null);
+
+        assertFalse(titular1.addDependente(d1));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void TestaDependenteInvalido3(){
+        Dependente d1 = new Dependente(null, niver1);
+
+        assertFalse(titular1.addDependente(d1));
+    }
 }
